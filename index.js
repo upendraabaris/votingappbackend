@@ -13,6 +13,11 @@ mongoose.connect(process.env.MONGODB_URL).then(()=>{
 app.use(bodyParser.json({limit:"50mb"}));
 app.use(bodyParser.urlencoded({extended:false, limit:"50mb"}));
 
+// Use CORS middleware
+app.use(cors({
+    origin: '*',
+}));
+
 
 // Import Routes
 import userRoute from "./routes/userRoute.js";
