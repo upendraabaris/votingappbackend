@@ -72,7 +72,7 @@ router.post('/login',async(req,res)=>{
         const token = generateToken(payload);
 
         // resturn token as response
-        res.status(200).json({token:token})
+        return res.status(200).json({token:token})
     }catch(err){
         console.log(err);
         res.status(500).json({error:"Internal Server Error"});
@@ -85,7 +85,7 @@ router.get('/profile',jwtAuthMiddleware,async(req,res)=>{
         const userData = req.user;
         const userId = userData.id;
         const user = await User.findById(userId);
-        res.status(200).json({user});
+        return res.status(200).json({user});
     }catch(err){
         console.log(err);
         res.status(500).json({error:"Internal Server Error"});
