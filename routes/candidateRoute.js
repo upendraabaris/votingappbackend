@@ -144,7 +144,7 @@ router.get("/vote/count",async(req,res)=>{
 // Get List of all candidates with only name and party fields
 router.get('/',async(req,res)=>{
     try{
-        const candidate = await Candidate.find({},'name party -_id');
+        const candidate = await Candidate.find({},'name party _id');
         // console.log(candidate);
 
         return res.status(200).json({data:candidate});
